@@ -1,5 +1,5 @@
 # Estágio 1: Build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /app
 
 # Copia tudo da pasta 'backend' para dentro do container
