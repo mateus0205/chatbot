@@ -1,23 +1,25 @@
-# 1. Estágio de Build (Compilação)
+# Estágio 1: Build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /src
+WORKDIR /app
 
-# Copia o ficheiro de projeto e restaura as dependências
-COPY ["chatIa.csproj", "./"]
-RUN dotnet restore "chatIa.csproj"
+# Copia tudo da pasta 'backend' para dentro do container
+COPY . ./
 
-# Copia todo o resto do código e compila
-COPY . .
-RUN dotnet publish "chatIa.csproj" -c Release -o /app/publish /p:UseAppHost=false
+# Restaura e publica sem precisar nomear o arquivo .csproj (ele pega o que estiver na pasta)
+RUN dotnet restore
+RUN dotnet publish -c Release -o out
 
-# 2. Estágio Final (Runtime - Execução)
+# Estágio 2: Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /app/publish .
 
-# Define a porta padrão do ASP.NET Core para o Render/Railway
+# Copia os arquivos compilados do estágio de build
+COPY --from=build /app/out .
+
+# Configuração de porta para o Render
 ENV ASPNETCORE_URLS=http://+:80
 EXPOSE 80
 
-# Comando para iniciar a aplicação
+# ATENÇÃO: O nome da DLL deve ser idêntico ao do arquivo .csproj
+# Se o arquivo é chatIa.csproj, a saída será chatIa.dll
 ENTRYPOINT ["dotnet", "chatIa.dll"]
