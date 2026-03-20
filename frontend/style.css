@@ -200,11 +200,17 @@ select:focus {
 
 /* --- MENSAGEM DA INTELIGÊNCIA ARTIFICIAL (BOT) --- */
 .bot {
-    min-width: 40px;
-    min-height: 20px;
-    display: inline-block; /* Ou block */
-    margin-bottom: 10px;
+    background: rgba(15, 23, 42, 0.75); /* Fundo muito mais legível */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #f8fafc; /* Branco muito suave */
+    align-self: flex-start;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    margin-left: 8px;
 }
+
 /* Mini-avatar da Inteligência Artificial */
 .bot::before {
     content: "✨"; /* Ícone de IA */
