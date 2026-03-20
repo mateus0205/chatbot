@@ -1,234 +1,234 @@
-    /* Importação da fonte */
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
+/* Importação da fonte */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: 'Outfit', sans-serif;
-    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+}
 
-    /* =========================================
-    FUNDO ANIMADO ATMOSFÉRICO
-    ========================================= */
+/* =========================================
+   FUNDO ANIMADO ATMOSFÉRICO
+   ========================================= */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    color: #ffffff;
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    background-size: 200% 200%;
+    animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body::before, body::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+}
+body::before {
+    width: 400px; height: 400px;
+    background: rgba(99, 102, 241, 0.3);
+    top: -10%; left: -10%;
+}
+body::after {
+    width: 300px; height: 300px;
+    background: rgba(236, 72, 153, 0.2);
+    bottom: -10%; right: -10%;
+}
+
+/* =========================================
+   CONTAINER PRINCIPAL (EFEITO VIDRO)
+   ========================================= */
+.chat-container {
+    width: 95%;
+    max-width: 450px;
+    height: 85vh;
+    max-height: 750px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================
+   CABEÇALHO E SELETOR
+   ========================================= */
+h2 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #fff, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+select {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;... (seu svg aqui) ...");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+/* =========================================
+   ÁREA DO CHAT E MENSAGENS
+   ========================================= */
+#chat {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 5px;
+}
+
+.message {
+    padding: 12px 16px;
+    max-width: 85%;
+    font-size: 0.95rem;
+    border-radius: 18px;
+    position: relative;
+    animation: popIn 0.4s ease;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.user { align-self: flex-end; background: linear-gradient(135deg, #4f46e5, #7c3aed); margin-right: 10px; }
+.bot { align-self: flex-start; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.1); margin-left: 10px; }
+
+/* =========================================
+   INPUT E BOTÃO
+   ========================================= */
+.input-area {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+input {
+    flex: 1;
+    padding: 12px 18px;
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    outline: none;
+}
+
+button {
+    padding: 0 20px;
+    border-radius: 25px;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* =========================================
+   RESPONSIVIDADE (FIX PARA CELULAR)
+   ========================================= */
+@media (max-width: 600px) {
+    /* 1. Ajuste do corpo para não rolar a página inteira */
     body {
-        display: flex;
+        align-items: flex-start;
         justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        width: 100vw;
+        height: 100vh;
+        height: -webkit-fill-available; /* Ajuste para Safari/iOS */
         overflow: hidden;
-        color: #ffffff;
-        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
-        background-size: 200% 200%;
-        animation: gradientMove 15s ease infinite;
+        padding: 0;
     }
 
-    @keyframes gradientMove {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    body::before, body::after {
-        content: "";
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(80px);
-        z-index: -1;
-    }
-    body::before {
-        width: 400px; height: 400px;
-        background: rgba(99, 102, 241, 0.3);
-        top: -10%; left: -10%;
-    }
-    body::after {
-        width: 300px; height: 300px;
-        background: rgba(236, 72, 153, 0.2);
-        bottom: -10%; right: -10%;
-    }
-
-    /* =========================================
-    CONTAINER PRINCIPAL (EFEITO VIDRO)
-    ========================================= */
+    /* 2. Container ocupando tudo sem margens */
     .chat-container {
-        width: 95%;
-        max-width: 450px;
-        height: 85vh;
-        max-height: 750px;
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-        border-radius: 24px;
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 100vh;
+        max-width: 100vw;
+        border-radius: 0;
+        margin: 0;
+        padding: 15px;
+        border: none;
         display: flex;
         flex-direction: column;
-        padding: 24px;
-        position: relative;
-        z-index: 1;
     }
 
-    /* =========================================
-    CABEÇALHO E SELETOR
-    ========================================= */
+    /* 3. Título menor para sobrar espaço */
     h2 {
-        font-size: 1.4rem;
-        font-weight: 500;
-        text-align: center;
-        margin-bottom: 20px;
-        background: linear-gradient(to right, #fff, #a5b4fc);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+        margin-top: 5px;
+        -webkit-text-fill-color: white; /* Garante visibilidade */
     }
 
+    /* 4. Seletor mais compacto */
     select {
-        width: 100%;
-        margin-bottom: 20px;
-        padding: 12px;
-        border-radius: 12px;
-        background: rgba(0, 0, 0, 0.3);
-        color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        outline: none;
-        appearance: none;
-        background-image: url("data:image/svg+xml;... (seu svg aqui) ...");
-        background-repeat: no-repeat;
-        background-position: right 12px center;
-        background-size: 16px;
+        margin-bottom: 12px;
+        padding: 10px;
+        font-size: 0.9rem;
     }
 
-    /* =========================================
-    ÁREA DO CHAT E MENSAGENS
-    ========================================= */
+    /* 5. Área de chat: O segredo é o flex-grow */
     #chat {
-        flex: 1;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        padding: 10px 5px;
+        flex-grow: 1; 
+        padding: 10px 0;
+        gap: 15px;
+        /* Evita que o chat empurre o input para fora */
+        overflow-y: auto; 
     }
 
+    /* 6. Balões de mensagem levemente menores */
     .message {
-        padding: 12px 16px;
-        max-width: 85%;
-        font-size: 0.95rem;
-        border-radius: 18px;
-        position: relative;
-        animation: popIn 0.4s ease;
+        max-width: 90%;
+        padding: 12px 14px;
+        font-size: 0.9rem;
     }
 
-    @keyframes popIn {
-        from { opacity: 0; transform: scale(0.9); }
-        to { opacity: 1; transform: scale(1); }
-    }
-
-    .user { align-self: flex-end; background: linear-gradient(135deg, #4f46e5, #7c3aed); margin-right: 10px; }
-    .bot { align-self: flex-start; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.1); margin-left: 10px; }
-
-    /* =========================================
-    INPUT E BOTÃO
-    ========================================= */
+    /* 7. Input fixo embaixo */
     .input-area {
-        display: flex;
+        margin-top: auto;
+        padding: 10px 0;
+        background: transparent;
         gap: 8px;
-        margin-top: 15px;
     }
 
     input {
-        flex: 1;
-        padding: 12px 18px;
-        border-radius: 25px;
-        background: rgba(0, 0, 0, 0.4);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #fff;
-        outline: none;
+        padding: 12px 15px;
+        font-size: 16px; /* 16px exatos impedem o zoom do iPhone */
     }
 
     button {
-        padding: 0 20px;
-        border-radius: 25px;
-        background: #fff;
-        border: none;
-        cursor: pointer;
-        font-weight: 600;
+        padding: 0 15px;
+        font-size: 0.9rem;
     }
-
-    /* =========================================
-    RESPONSIVIDADE (FIX PARA CELULAR)
-    ========================================= */
-    @media (max-width: 600px) {
-        /* 1. Ajuste do corpo para não rolar a página inteira */
-        body {
-            align-items: flex-start;
-            justify-content: center;
-            height: 100vh;
-            height: -webkit-fill-available; /* Ajuste para Safari/iOS */
-            overflow: hidden;
-            padding: 0;
-        }
-
-        /* 2. Container ocupando tudo sem margens */
-        .chat-container {
-            width: 100% !important;
-            height: 100% !important;
-            max-height: 100vh;
-            max-width: 100vw;
-            border-radius: 0;
-            margin: 0;
-            padding: 15px;
-            border: none;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* 3. Título menor para sobrar espaço */
-        h2 {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            margin-top: 5px;
-            -webkit-text-fill-color: white; /* Garante visibilidade */
-        }
-
-        /* 4. Seletor mais compacto */
-        select {
-            margin-bottom: 12px;
-            padding: 10px;
-            font-size: 0.9rem;
-        }
-
-        /* 5. Área de chat: O segredo é o flex-grow */
-        #chat {
-            flex-grow: 1; 
-            padding: 10px 0;
-            gap: 15px;
-            /* Evita que o chat empurre o input para fora */
-            overflow-y: auto; 
-        }
-
-        /* 6. Balões de mensagem levemente menores */
-        .message {
-            max-width: 90%;
-            padding: 12px 14px;
-            font-size: 0.9rem;
-        }
-
-        /* 7. Input fixo embaixo */
-        .input-area {
-            margin-top: auto;
-            padding: 10px 0;
-            background: transparent;
-            gap: 8px;
-        }
-
-        input {
-            padding: 12px 15px;
-            font-size: 16px; /* 16px exatos impedem o zoom do iPhone */
-        }
-
-        button {
-            padding: 0 15px;
-            font-size: 0.9rem;
-        }
-    }
+}
