@@ -21,6 +21,7 @@ export async function perguntarIA(pergunta, especializacao) {
 
     // Como o seu Controller retorna Ok(new { resposta = resposta })
     // Você precisa pegar a propriedade .resposta do JSON
+    // No api.js, mantenha assim:
     const dados = await resposta.json();
-    return dados.resposta; 
+    return dados.resposta; // Isso retorna a string "Olá, sou um programador..." 
 }

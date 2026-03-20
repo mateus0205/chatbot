@@ -51,17 +51,20 @@ export async function enviarPergunta() {
     chat.scrollTop = chat.scrollHeight;
 
     try {
-        // 6. Envia a pergunta para a API e aguarda a resposta
-        const data = await perguntarIA(pergunta, especializacao);
+    // 6. Envia a pergunta para a API e aguarda a resposta
+    const data = await perguntarIA(pergunta, especializacao);
 
-        // 7. Atualiza a mensagem temporária com a resposta real formatada
-        botMsg.innerHTML = formatarTextoIA(data.resposta);
-        
-    } catch (error) {
-        // Caso dê algum erro na API
-        botMsg.innerText = "⚠️ Desculpe, ocorreu um erro ao conectar com a IA.";
-        console.error(error);
+    // CORREÇÃO: data já é o texto da resposta, não precisa do .resposta aqui
+    if (data) {
+        botMsg.innerHTML = formatarTextoIA(data);
+    } else {
+        botMsg.innerText = "IA não retornou resposta.";
     }
+    
+} catch (error) {
+    botMsg.innerText = "⚠️ Desculpe, ocorreu um erro ao conectar com a IA.";
+    console.error(error);
+}   
 
     // 8. LIBERA O INPUT E O BOTÃO APÓS A RESPOSTA
     perguntaInput.disabled = false;
