@@ -1,0 +1,6 @@
+@chatIa_HostAddress = http://localhost:5021
+
+GET {{chatIa_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

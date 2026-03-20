@@ -1,0 +1,321 @@
+/* Importando a fonte 'Outfit', muito usada em startups de IA pela sua elegância */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* =========================================
+   FUNDO ANIMADO ATMOSFÉRICO
+   ========================================= */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    color: #ffffff;
+    /* Gradiente moderno e escuro */
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    background-size: 200% 200%;
+    animation: gradientMove 15s ease infinite;
+}
+
+/* Animação suave do fundo */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Bolhas de luz no fundo para dar um toque "Mágico" */
+body::before, body::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+}
+body::before {
+    width: 400px;
+    height: 400px;
+    background: rgba(99, 102, 241, 0.3); /* Índigo */
+    top: -10%;
+    left: -10%;
+}
+body::after {
+    width: 300px;
+    height: 300px;
+    background: rgba(236, 72, 153, 0.2); /* Rosa/Purple */
+    bottom: -10%;
+    right: -10%;
+}
+
+/* =========================================
+   CONTAINER PRINCIPAL (EFEITO VIDRO)
+   ========================================= */
+.chat-container {
+    width: 100%;
+    max-width: 450px;
+    height: 85vh;
+    max-height: 750px;
+    
+    /* O Segredo do Efeito de Vidro (Glassmorphism) */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    z-index: 1;
+}
+
+/* =========================================
+   CABEÇALHO E SELETOR
+   ========================================= */
+h2 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+    /* Texto com gradiente metálico */
+    background: linear-gradient(to right, #fff, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+select {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    appearance: none; 
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.6)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 18px;
+}
+
+select option {
+    background: #1e1b4b; /* Fundo escuro para as opções do select nativo */
+    color: #fff;
+}
+
+select:focus {
+    border-color: rgba(165, 180, 252, 0.5);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* =========================================
+   ÁREA DO CHAT
+   ========================================= */
+#chat {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* Mais respiro entre as mensagens */
+    padding: 10px 16px 20px 16px; /* Espaço lateral extra para os avatares não cortarem */
+}
+
+/* Scrollbar refinada */
+#chat::-webkit-scrollbar {
+    width: 6px;
+}
+#chat::-webkit-scrollbar-track {
+    background: transparent;
+}
+#chat::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+#chat::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   MENSAGENS (BALÕES) - DESIGN APRIMORADO
+   ========================================= */
+.message {
+    padding: 16px 20px;
+    max-width: 85%;
+    font-size: 0.95rem;
+    line-height: 1.6; /* Melhor legibilidade para textos longos */
+    letter-spacing: 0.2px;
+    border-radius: 20px;
+    word-wrap: break-word;
+    position: relative; /* Necessário para posicionar os avatares */
+    text-align: left; /* Garante que o texto fique alinhado à esquerda */
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    transform-origin: bottom;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: translateY(15px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* --- MENSAGEM DO UTILIZADOR --- */
+.user {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: #ffffff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3);
+    margin-right: 8px;
+}
+
+/* Mini-avatar do Utilizador */
+.user::after {
+    content: "👤";
+    position: absolute;
+    bottom: -6px;
+    right: -14px;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* --- MENSAGEM DA INTELIGÊNCIA ARTIFICIAL (BOT) --- */
+.bot {
+    background: rgba(15, 23, 42, 0.75); /* Fundo muito mais legível */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #f8fafc; /* Branco muito suave */
+    align-self: flex-start;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    margin-left: 8px;
+}
+
+/* Mini-avatar da Inteligência Artificial */
+.bot::before {
+    content: "✨"; /* Ícone de IA */
+    position: absolute;
+    bottom: -6px;
+    left: -14px;
+    background: #1e1b4b;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Formatação rica para as respostas da IA (Parágrafos e Negrito) */
+.bot p {
+    margin-bottom: 10px;
+}
+.bot p:last-child {
+    margin-bottom: 0;
+}
+.bot strong {
+    color: #a5b4fc; /* Um tom de azul/roxo claro para destacar os negritos */
+    font-weight: 600;
+}
+
+/* =========================================
+   ÁREA DE INPUT E BOTÃO
+   ========================================= */
+.input-area {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 100px; /* Formato de pílula (Pill shape) */
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+input:focus {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(165, 180, 252, 0.5);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+button {
+    padding: 0 24px;
+    border-radius: 100px;
+    background: #fff;
+    color: #0f172a;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+button:hover {
+    background: #e2e8f0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+button:active {
+    transform: translateY(0);
+}/* =========================================
+   ESTILIZAÇÃO DE BLOCOS DE CÓDIGO
+   ========================================= */
+.message pre {
+    background: #0f172a; /* Fundo escuro para o código */
+    padding: 12px;
+    border-radius: 8px;
+    overflow-x: auto; /* Cria barra de rolagem se o código for muito longo */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.message code {
+    font-family: 'Courier New', Courier, monospace; /* Fonte clássica de código */
+    font-size: 0.9rem;
+    color: #38bdf8; /* Azul claro para o texto do código */
+}
+
+/* Para códigos curtos no meio do texto (ex: `var x = 1`) */
+.message p code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #fb7185; /* Cor rosa/avermelhada para destacar */
+}

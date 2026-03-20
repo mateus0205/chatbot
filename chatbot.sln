@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chatIa", "chatIa\chatIa.csproj", "{32A6CE8D-8923-63CA-5570-A0668D22A097}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32A6CE8D-8923-63CA-5570-A0668D22A097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32A6CE8D-8923-63CA-5570-A0668D22A097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32A6CE8D-8923-63CA-5570-A0668D22A097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32A6CE8D-8923-63CA-5570-A0668D22A097}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6F70BF8-AE18-4940-AAB4-6BFE26890B12}
+	EndGlobalSection
+EndGlobal

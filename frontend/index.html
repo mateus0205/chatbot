@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat IA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="chat-container">
+        <h2>Chat com Especialistas IA</h2>
+
+        <select id="especialista">
+            <option value="Você é um veterinário especialista em animais.">Veterinário</option>
+            <option value="Você é um cardiologista especialista em coração.">Cardiologista</option>
+            <option value="Você é um programador especialista em programação.">Programador</option>
+            <option value="Você é um professor de matemática didático.">Professor</option>
+            <option value="Você é um advogado especialista em direito civil.">Advogado</option>
+        </select>
+
+        <div id="chat">
+            </div>
+
+        <div class="input-area">
+            <input id="pergunta" placeholder="Digite sua pergunta...">
+            <button id="btnPerguntar">Enviar</button>
+        </div>
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
+
+</body>
+</html>
