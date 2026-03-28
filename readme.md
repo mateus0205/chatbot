@@ -6,7 +6,7 @@ Este é um projeto de chatbot inteligente que utiliza a API da **Groq (Llama 3)*
 ---
 
 ## 🚀 Demonstração
-![Projeto rodando](image-1.png)
+![Projeto rodando](image.png)
 
 O projeto está dividido em duas partes principais conectadas via API:
 - **Frontend:** Hospedado na [Vercel](https://chatbot-eta-opal-65.vercel.app/)
